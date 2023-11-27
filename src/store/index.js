@@ -19,7 +19,7 @@ export default createStore({
   },
   actions: {
     getTaskList(context) {
-      fetch("http://localhost:8080/tasks.json")
+      fetch("https://tasks3-757b2-default-rtdb.firebaseio.com/tasks.json")
         .then((r) => {
           if (r.ok) {
             return r.json();

@@ -111,7 +111,7 @@ export default {
         dueDate: this.dueDate,
       };
 
-      fetch("http://localhost:8080/tasks.json", {
+      fetch("https://tasks3-757b2-default-rtdb.firebaseio.com/tasks.json", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

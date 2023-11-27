@@ -129,9 +129,12 @@ export default {
       var del = confirm("Are you sure you want to delete?");
       if (del == true) {
         var tagid = id;
-        fetch(`http://localhost:8080/tasks/${tagid}.json`, {
-          method: "DELETE",
-        })
+        fetch(
+          `https://tasks3-757b2-default-rtdb.firebaseio.com/tasks/${tagid}.json`,
+          {
+            method: "DELETE",
+          }
+        )
           .then((res) => res.text())
           .then((res) => console.log(res));
         this.getTaskList();
