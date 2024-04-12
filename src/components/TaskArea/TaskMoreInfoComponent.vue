@@ -74,6 +74,7 @@ export default {
       this.edit = true;
     },
   },
+
   computed: {
     rataNeeded() {
       var rataIsNeeded = false;

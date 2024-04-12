@@ -123,6 +123,9 @@ export default {
     },
   },
   computed: {},
+  unmounted() {
+    this.getTaskList();
+  },
   methods: {
     ...mapActions(["getTaskList"]),
     deleteItem(id) {
@@ -130,7 +133,7 @@ export default {
       if (del == true) {
         var tagid = id;
         fetch(
-          `https://tasks3-757b2-default-rtdb.firebaseio.com/tasks/${tagid}.json`,
+          `https://tasks4-e1854-default-rtdb.firebaseio.com//tasks/${tagid}.json`,
           {
             method: "DELETE",
           }
@@ -142,31 +145,35 @@ export default {
     },
     saveChanges(id) {
       var tagid = id;
-      fetch(`http://localhost:8080/tasks/${tagid}.json`, {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-        method: "PATCH",
+      fetch(
+        `https://tasks4-e1854-default-rtdb.firebaseio.com//tasks/${tagid}.json`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          method: "PUT",
 
-        body: JSON.stringify({
-          id: this.id,
-          title: this.title,
-          projectCoordinator: this.newProjectCoordinator,
-          gases: this.newGases,
-          building: this.newBuilding,
-          testType: this.newTests,
-          rataNeeded: this.newrataNeeded,
-        }),
-      })
+          body: JSON.stringify({
+            id: this.id,
+            title: this.title,
+            projectCoordinator: this.newProjectCoordinator,
+            gases: this.newGases,
+            building: this.newBuilding,
+            testType: this.newTests,
+            rataNeeded: this.newrataNeeded,
+          }),
+        }
+      )
         .then(function (response) {
           return response.json();
         })
         .then(function (data) {
           console.log(data);
         });
-      this.getTaskList();
+
       this.$emit("close");
+      this.getTaskList();
     },
   },
 };

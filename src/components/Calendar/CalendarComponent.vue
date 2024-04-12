@@ -93,6 +93,7 @@ export default {
 }
 .v-container {
   height: 97px;
+  width: 1200px;
 }
 #dateNumber {
   text-align: right;
