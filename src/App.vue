@@ -19,6 +19,13 @@
       </v-list>
     </v-navigation-drawer>
 
+    <v-overlay
+      v-model="overlay"
+      class="align-center justify-center"
+      transition="scale-transition"
+      ><WelcomeComponent @click="overlaymethod()" />
+    </v-overlay>
+
     <v-main id="main">
       <!-- <WeatherComponent /> -->
       <router-view></router-view>
@@ -28,6 +35,8 @@
 </template>
 
 <script>
+import WelcomeComponent from "./components/Welcome/WelcomeComponent.vue";
+
 // import CalendarComponent from "./components/Calendar/CalendarComponent.vue";
 
 // import TaskAreaComponent from "./components/TaskArea/TaskAreaComponent.vue";
@@ -36,12 +45,22 @@
 
 export default {
   name: "App",
-
+  data() {
+    return {
+      overlay: true,
+    };
+  },
   components: {
-    // TaskAreaComponent,
+    WelcomeComponent,
   },
   beforeMount() {
     this.$store.dispatch("getTaskList");
+  },
+  methods: {
+    overlaymethod() {
+      this.overlay = false;
+      this.$router.push("/");
+    },
   },
 };
 </script>
@@ -68,5 +87,10 @@ export default {
 .is-today > .flex > #wrapper > #dateNumber {
   border: 1px solid gray;
   background-color: rgba(128, 128, 128, 0.3);
+}
+
+.v-overlay__scrim {
+  opacity: 0.8 !important;
+  background: black !important;
 }
 </style>

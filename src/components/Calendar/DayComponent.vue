@@ -208,4 +208,8 @@ img {
   width: 100%;
   color: red;
 }
+
+.v-chip {
+  cursor: pointer;
+}
 </style>

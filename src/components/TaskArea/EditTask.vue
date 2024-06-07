@@ -133,7 +133,7 @@ export default {
       if (del == true) {
         var tagid = id;
         fetch(
-          `https://tasks4-e1854-default-rtdb.firebaseio.com//tasks/${tagid}.json`,
+          `https://task5-16333-default-rtdb.firebaseio.com//tasks/${tagid}.json`,
           {
             method: "DELETE",
           }
@@ -146,7 +146,7 @@ export default {
     saveChanges(id) {
       var tagid = id;
       fetch(
-        `https://tasks4-e1854-default-rtdb.firebaseio.com//tasks/${tagid}.json`,
+        `https://task5-16333-default-rtdb.firebaseio.com//tasks/${tagid}.json`,
         {
           headers: {
             Accept: "application/json",
